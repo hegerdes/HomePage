@@ -1,0 +1,141 @@
+{% macro head() %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
+  <meta name="description"
+    content="{% if page.description %}{{ page.description | striptags | trim | truncate(length=160) }}{% else %}{{ config.description }}{% endif %}">
+
+  <!-- Local Main CSS -->
+  <link rel="stylesheet" href="/main.css">
+
+  <!-- Alternative CDN Sources -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+</head>
+{% endmacro head %}
+
+{% macro navbar() %}
+<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-faded shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">{{ config.extra.username }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-3 ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Archive</a>
+        </li>
+      </ul>
+      <form>
+        <div class="d-flex navbar-search-container">
+          <button class="me-2" type="submit" title="Start-Search">
+            <i class="fas fa-search"></i>
+          </button>
+          <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+        </div>
+      </form>
+      <ul class="navbar-nav d-flex mb-3 ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#footer">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endmacro navbar %}
+
+{% macro header() %}
+<div id="particles-js">
+  <div class="header">
+    <h1>
+      <span class="site-title">{{ config.extra.username }}</span>
+      <span class="site-description">{{ config.extra.user_title | linebreaksbr | safe }}</span>
+    </h1>
+    <div class="header-icons">
+      <a aria-label="Send email" href="mailto:{{ config.extra.email }}"><i class="icon fas fa-envelope"></i></a>
+      <a aria-label="My Github" target="_blank" href="https://github.com/{{ config.extra.github_username }}"><i
+          class="icon fab fa-github" aria-hidden="true"></i></a>
+      <a aria-label="My GitLab" target="_blank" href="https://gitlab.com/{{ config.extra.github_username }}"><i
+          class="icon fab fa-gitlab" aria-hidden="true"></i></a>
+      <a aria-label="My Mastodon" target="_blank" href="{{ config.extra.mastodon_profile }}"><i
+          class="icon fab fa-mastodon" aria-hidden="true"></i></a>
+      <a aria-label="My LinkedIn" target="_blank" href="{{ config.extra.linkedin_profile }}"><i
+          class="icon fab fa-linkedin" aria-hidden="true"></i></a>
+    </div>
+    <div class="header-links">
+      <a class="link" href="#about" data-scroll>About Me</a>
+      <a class="link" href="#projects" data-scroll>Projects</a>
+      <a class="link" href="/blog" data-scroll>Blog</a>
+    </div>
+  </div>
+  <a class="down" title="AboutMeLink" href="#about" data-scroll><i class="icon fas fa-sort-down"
+      aria-hidden="true"></i></a>
+</div>
+{% endmacro header %}
+
+
+{% macro footer(include_sweet_scroll_js=true, include_bootstrab_js=true, include_particle_js=false) %}
+<footer id="footer" class="footer">
+  <p>CONTACT INFORMATION</p>
+  <div class="header-icons">
+    <a aria-label="Send email" href="mailto:{{ config.extra.email }}"><i class="icon fas fa-envelope"></i></a>
+    <a aria-label="My Github" target="_blank" href="https://github.com/{{ config.extra.github_username }}"><i
+        class="icon fab fa-github" aria-hidden="true"></i></a>
+    <a aria-label="My GitLab" target="_blank" href="https://gitlab.com/{{ config.extra.github_username }}"><i
+        class="icon fab fa-gitlab" aria-hidden="true"></i></a>
+    <a aria-label="My Mastodon" target="_blank" href="{{ config.extra.mastodon_profile }}"><i
+        class="icon fab fa-mastodon" aria-hidden="true"></i></a>
+    <a aria-label="My LinkedIn" target="_blank" href="{{ config.extra.linkedin_profile }}"><i
+        class="icon fab fa-linkedin" aria-hidden="true"></i></a>
+  </div>
+  <p>&copy; {{ config.extra.username }}</p>
+  <p>Generated with <a href="https://www.getzola.org/">Zola</a> with custom theme inspired by <a
+      href="https://github.com/svavs">Silvano Sallese</a> & <a href="https://github.com/nrandecker">Nathan
+      Randecker</a></p>
+</footer>
+
+{% if config.extra.use_cdn_resources %}
+<!-- CDN Sources -->
+{% if include_particle_js %}
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+  integrity="sha384-d+UOwmNNIC7V4izkTAKSXzWhjC2GxiS9PTykO1XdOPC3nc2z65UOS7SP6QdKPA70" crossorigin="anonymous"></script>
+{% endif %}
+{% if include_bootstrab_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endif %}
+{% if include_sweet_scroll_js %}
+<script src="https://cdn.jsdelivr.net/npm/sweet-scroll@2.2.0/sweet-scroll.min.js"
+  integrity="sha384-6LDCXqqqSSEWl4Ho/+Q7XZ8TMaT5IRje0LGGrks7SLk6xWLST23fmQWi5MJ/mQ4c" crossorigin="anonymous"></script>
+{% endif %}
+
+{% else %}
+<!-- Local Sources -->
+{% if include_particle_js %}
+<script src="/js/particles-2.0.0.min.js"
+  integrity="sha384-d+UOwmNNIC7V4izkTAKSXzWhjC2GxiS9PTykO1XdOPC3nc2z65UOS7SP6QdKPA70" crossorigin="anonymous"></script>
+{% endif %}
+{% if include_bootstrab_js %}
+<script src="/js/bootstrap-5.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endif %}
+{% if include_sweet_scroll_js %}
+<script src="/js/sweet-scroll.min.js"
+  integrity="sha384-6LDCXqqqSSEWl4Ho/+Q7XZ8TMaT5IRje0LGGrks7SLk6xWLST23fmQWi5MJ/mQ4c" crossorigin="anonymous"></script>
+{% endif %}
+{% endif %}
+
+<!-- Custom JS -->
+<script src="/js/app.js"></script>
+{% endmacro footer %}

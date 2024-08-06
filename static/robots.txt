@@ -1,4 +1,8 @@
 User-agent: *
+Allow: /
 Disallow: /docs/*
 Disallow: /img/*
 Disallow: /ctf/*
+Disallow: /fonts/*
+Disallow: /ori/*
+Sitemap: https://henrikgerdes.me/sitemap.xml

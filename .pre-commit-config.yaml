@@ -1,24 +1,26 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v4.6.0
     hooks:
-      - id: check-yaml
-        args: [--allow-multiple-documents]
       - id: end-of-file-fixer
       - id: check-added-large-files
-      # - id: check-executables-have-shebangs
+      - id: check-executables-have-shebangs
       - id: check-json
+      - id: check-toml
+      - id: check-symlinks
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: detect-private-key
+      - id: mixed-line-ending
+      - id: double-quote-string-fixer
         exclude: .vscode
       - id: pretty-format-json
         exclude: .vscode
         args: [--autofix, --no-sort-keys, --no-ensure-ascii]
       - id: trailing-whitespace
-        exclude: '.*.md'
-      - id: detect-private-key
-      - id: mixed-line-ending
-      - id: check-case-conflict
-      - id: check-merge-conflict
-      - id: double-quote-string-fixer
+        args: [--markdown-linebreak-ext=md]
 
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.18.0

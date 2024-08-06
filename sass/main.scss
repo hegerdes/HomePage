@@ -1,0 +1,23 @@
+@import "lib/normalize";
+@import "lib/devicon";
+
+// Fontawsome
+@import "lib/fa-6/fontawesome";
+@import "lib/fa-6/brands";
+@import "lib/fa-6/regular";
+@import "lib/fa-6/solid";
+
+// // Bootstrab
+@import "lib/bs-5/bootstrap";
+@import "lib/bs-5/bootstrap-grid";
+@import "lib/bs-5/bootstrap-utilities";
+
+
+@import 'base';
+@import 'vars';
+@import 'animation';
+@import 'header';
+@import 'about';
+@import 'projects';
+@import 'navbar';
+@import 'footer';

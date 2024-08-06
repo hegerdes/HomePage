@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+
+{% block body %}
+
+
+<body>
+    {{ macros::navbar() }}
+
+    {% block content %}
+    <h1 class="title">
+        {{ section.title }}
+    </h1>
+    <ul>
+        <!-- If you are using pagination, section.pages will be empty.
+           You need to use the paginator object -->
+        {% for page in section.pages %}
+        <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endblock content %}
+
+    {{ macros::footer() }}
+
+</body>
+
+{% endblock body %}

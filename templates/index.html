@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+{% import "content.html" as content %}
+
+{% block body %}
+
+<body>
+
+  {{ macros::navbar() }}
+
+  {{ macros::header() }}
+
+  <section id="about">
+    {{ content::about() }}
+  </section>
+
+  <section id="projects">
+    {{ content::projects() }}
+  </section>
+
+  {% block content %}
+  {% endblock content %}
+
+  {{ macros::footer(include_particle_js=true) }}
+
+</body>
+{% endblock body %}

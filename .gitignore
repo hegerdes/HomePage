@@ -68,8 +68,9 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# Nuxt generate
+# Generate
 dist
+public
 
 # vuepress build output
 .vuepress/dist
@@ -92,7 +93,8 @@ sw.*
 *.mp4
 *.zip
 .output
-content/code/hetzner/.terraform
-content/code/hetzner/.terraform.lock.hcl
-content/code/hetzner/terraform.tfstate.backup
-converts/
+.terraform
++.tfstate.backup
+
+# TMP
+themes

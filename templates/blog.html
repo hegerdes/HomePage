@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+
+{% block body %}
+
+
+<body>
+    {{ macros::navbar() }}
+
+    {% block content %}
+    <ul>
+        {% for page in section.pages %}
+        <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endblock content %}
+
+    {{ macros::footer() }}
+
+</body>
+
+{% endblock body %}

@@ -7,13 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  ci:
+  test-build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node: [18, 20]
-
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v4
@@ -21,7 +16,7 @@ jobs:
       - name: Setup node env 🏗
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
           check-latest: true
 
       - name: Cache node_modules 📦
